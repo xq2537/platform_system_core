@@ -153,6 +153,20 @@ int ifconfig_main(int argc, char *argv[])
                 die("expecting an IP address for parameter \"netmask\"");
             }
             setnetmask(s, &ifr, argv[0]);
+        } else if (!strcmp(argv[0], "getip")) {
+            if (ioctl(s, SIOCGIFADDR, &ifr) < 0) {
+                perror(ifr.ifr_name);
+                return -1;
+            } else
+                addr = ((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr.s_addr;
+
+            sprintf(astring, "%d.%d.%d.%d",
+                addr & 0xff,
+                ((addr >> 8) & 0xff),
+                ((addr >> 16) & 0xff),
+                ((addr >> 24) & 0xff));
+ 
+            printf("%s\n", astring);
         } else if (isdigit(argv[0][0])) {
             setaddr(s, &ifr, argv[0]);
             setflags(s, &ifr, IFF_UP, 0);

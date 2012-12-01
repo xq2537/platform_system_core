@@ -183,6 +183,7 @@ static struct fs_path_config android_dirs[] = {
 static struct fs_path_config android_files[] = {
     { 00440, AID_ROOT,      AID_SHELL,     "system/etc/init.goldfish.rc" },
     { 00550, AID_ROOT,      AID_SHELL,     "system/etc/init.goldfish.sh" },
+    { 00550, AID_ROOT,      AID_SHELL,     "system/etc/init.androVM.sh" },
     { 00440, AID_ROOT,      AID_SHELL,     "system/etc/init.trout.rc" },
     { 00550, AID_ROOT,      AID_SHELL,     "system/etc/init.ril" },
     { 00550, AID_ROOT,      AID_SHELL,     "system/etc/init.testmenu" },
@@ -212,6 +213,7 @@ static struct fs_path_config android_files[] = {
     { 06755, AID_ROOT,      AID_ROOT,      "system/xbin/procrank" },
     { 06755, AID_ROOT,      AID_ROOT,      "system/xbin/procmem" },
     { 06755, AID_ROOT,      AID_ROOT,      "system/xbin/tcpdump" },
+    { 06755, AID_ROOT,      AID_ROOT,      "system/bin/setdpi" },
     { 04770, AID_ROOT,      AID_RADIO,     "system/bin/pppd-ril" },
 		/* the following file is INTENTIONALLY set-uid, and IS included
 		 * in user builds. */

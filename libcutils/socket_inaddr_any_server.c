@@ -59,6 +59,7 @@ int socket_inaddr_any_server(int port, int type)
         int ret;
 
         ret = listen(s, LISTEN_BACKLOG);
+        printf("listen() returned %d, errno=%d\n", ret, errno);
 
         if (ret < 0) {
             close(s);

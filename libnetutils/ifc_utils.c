@@ -806,10 +806,15 @@ ifc_configure(const char *ifname,
         ifc_close();
         return -1;
     }
-    if (ifc_create_default_route(ifname, gateway)) {
-        printerr("failed to set default route %s: %s\n", ipaddr_to_string(gateway), strerror(errno));
-        ifc_close();
-        return -1;
+    if (strncmp(ifname,"eth",3) || gateway) {
+        if (ifc_create_default_route(ifname, gateway)) {
+            printerr("failed to set default route %s: %s\n", ipaddr_to_string(gateway), strerror(errno));
+            ifc_close();
+            return -1;
+        }
+    }
+    else {
+	ALOGD("Don't create null default route on %s\n", ifname);
     }
 
     ifc_close();

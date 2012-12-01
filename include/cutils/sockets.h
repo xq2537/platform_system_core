@@ -93,6 +93,8 @@ extern int socket_local_client_connect(int fd,
         const char *name, int namespaceId, int type);
 extern int socket_local_client(const char *name, int namespaceId, int type);
 extern int socket_inaddr_any_server(int port, int type);
+extern int socket_vmware_any_server(int port, int type);
+extern int socket_vmware_client(const char *, int, int);
 
 /*
  * socket_peer_is_trusted - Takes a socket which is presumed to be a

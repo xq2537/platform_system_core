@@ -33,8 +33,6 @@ static int autosuspend_init(void)
         return 0;
     }
 
-    autosuspend_inited = true;
-
     autosuspend_ops = autosuspend_earlysuspend_init();
     if (autosuspend_ops) {
         goto out;
@@ -57,6 +55,7 @@ static int autosuspend_init(void)
 
 out:
     ALOGV("autosuspend initialized\n");
+    autosuspend_inited = true;
     return 0;
 }
 

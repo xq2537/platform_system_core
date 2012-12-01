@@ -62,6 +62,10 @@ LOCAL_MODULE := lib64log
 LOCAL_SRC_FILES := $(liblog_host_sources)
 LOCAL_LDLIBS := -lpthread
 LOCAL_CFLAGS := -DFAKE_LOG_DEVICE=1 -m64
+ifeq ($(HOST_OS),windows)
+LOCAL_CC = /usr/bin/amd64-mingw32msvc-gcc 
+LOCAL_CXX = /usr/bin/amd64-mingw32msvc-g++
+endif
 include $(BUILD_HOST_STATIC_LIBRARY)
 
 
