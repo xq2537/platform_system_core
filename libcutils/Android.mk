@@ -105,6 +105,9 @@ LOCAL_STATIC_LIBRARIES := lib64log
 ifeq ($(HOST_OS),linux)
 LOCAL_CFLAGS += $(hostSmpFlag) -m64 -Dlinux
 endif
+ifeq ($(HOST_OS),darwin)
+LOCAL_CFLAGS += $(hostSmpFlag) -m64 -Dlinux
+endif
 ifeq ($(HOST_OS),windows)
 LOCAL_CC = /usr/bin/amd64-mingw32msvc-gcc 
 LOCAL_CXX = /usr/bin/amd64-mingw32msvc-g++
